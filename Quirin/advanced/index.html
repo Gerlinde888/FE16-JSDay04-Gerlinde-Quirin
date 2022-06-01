@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body,
+    html {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #circle {
+        width: 30vw;
+        height: 30vw;
+        background-color: aqua;
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+    }
+    
+    #info {
+        position: absolute;
+        bottom: -1em;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+</style>
+
+<body>
+    <div id="circle">
+
+        <div id="info"></div>
+    </div>
+
+    <script>
+        let circle = document.getElementById('circle');
+        let info = document.getElementById('info');
+        circle.addEventListener('mouseover', e => {
+            info.innerHTML = 'You are in the circle';
+        }, false);
+        circle.addEventListener('mouseout', e => {
+            info.innerHTML = 'You are outside the circle';
+        }, false);
+        circle.addEventListener('click', e => {
+            circle.style.background = 'lightgray';
+        }, false);
+        circle.addEventListener('dblclick', e => {
+            circle.style.background = 'blue';
+        }, false);
+    </script>
+</body>
+
+</html>
