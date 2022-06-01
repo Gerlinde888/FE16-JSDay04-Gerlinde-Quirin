@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    #grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 1em;
+        width: 50vw;
+        height: 50vw;
+        margin: 1em;
+    }
+    
+    #grid>* {
+        /* border: 1px inset lightgray; */
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+    
+    .santa {
+        background-image: url('./santa.png');
+    }
+    
+    .gift {
+        background-image: url('./gift.png');
+    }
+    
+    #changeColor {
+        background-color: aqua;
+        /* font-size: 2rem; */
+        cursor: pointer;
+        padding: 1em;
+    }
+</style>
+
+<body>
+
+    <div id="grid">
+        <div class="gift"></div>
+        <div class="santa"></div>
+        <div class="gift"></div>
+        <div class="gift"></div>
+        <div class="santa"></div>
+        <div class="gift"></div>
+        <div class="santa"></div>
+        <div class="santa"></div>
+        <div class="gift"></div>
+    </div>
+
+    <span id="changeColor">Change color</span>
+
+    <script>
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        clicked = (e) => {
+            if (e.target.className == 'santa') {
+                e.target.style.background = 'none';
+                e.target.className = '';
+            }
+        }
+        document.querySelectorAll('#grid > div').forEach(e => {
+            e.addEventListener('click', clicked, false);
+        });
+        document.getElementById('changeColor').addEventListener('click', e => {
+            let red = getRandomInt(0, 255);
+            let blue = getRandomInt(0, 255);
+            let green = getRandomInt(0, 255);
+            document.body.style.background = `rgb(${red},${green},${blue})`;
+        }, false);
+    </script>
+</body>
+
+</html>
