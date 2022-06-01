@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" id="form">
+        <label for="firstname">First Name: </label><input type="text" name="firstname" id="firstname">
+        <label for="lastname">Last Name: </label><input type="text" name="lastname" id="lastname">
+        <label for="age">Age: </label><input type="text" name="age" id="age">
+    </form>
+
+    <div data-name="first" id="firstname_div"></div>
+    <div data-name="last" id="lastname_div"></div>
+    <div id="age_div"></div>
+
+    <script>
+        displayName = (e) => {
+            console.log(e);
+            let div = document.getElementById(e.target.id + '_div');
+            let name = e.target.value;
+            div.style.color = name.length > 5 ? 'green' : 'red';
+            div.innerHTML = `Your ${div.dataset.name} name is ${name}`;
+        };
+
+        displayAge = (e) => {
+            let div = document.getElementById(e.target.id + '_div');
+            div.innerHTML = 'Your age is ' + e.target.value;
+        }
+
+        document.getElementById('firstname').addEventListener('change', displayName, false);
+        document.getElementById('lastname').addEventListener('change', displayName, false);
+        document.getElementById('age').addEventListener('change', displayAge, false);
+    </script>
+</body>
+
+</html>
